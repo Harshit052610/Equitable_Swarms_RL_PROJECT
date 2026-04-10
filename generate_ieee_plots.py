@@ -11,9 +11,9 @@ plt.rcParams['ytick.labelsize'] = 9
 plt.rcParams['axes.labelsize'] = 10
 plt.rcParams['legend.fontsize'] = 8
 
-def save_ieee_plot(data, x_col, y_col, title, ylabel, filename, color='#1f77b4', target=None, target_color='#d62728'):
+def save_ieee_plot(data, x_col, y_col, title, ylabel, filename, color='#1f77b4', target=None, target_color='#d62728', linestyle='-'):
     plt.figure(figsize=(5, 4))
-    plt.plot(data[x_col], data[y_col], color=color, linewidth=1.5, label=ylabel)
+    plt.plot(data[x_col], data[y_col], color=color, linewidth=1.5, label=ylabel, linestyle=linestyle)
     
     if target is not None:
         plt.axhline(y=target, color=target_color, linestyle='--', linewidth=1.5, label=f'Target ({target})')
@@ -58,13 +58,15 @@ save_ieee_plot(df_clean, 'epoch', 'total_policy_loss',
               'Policy Loss Convergence', 
               'Policy Loss', 
               'fig_ploss.png',
-              color='#FF6347')
+              color='#FF6347',
+              linestyle='--')
 
 save_ieee_plot(df_clean, 'epoch', 'total_value_loss', 
               'Value Loss Convergence', 
               'Value Loss', 
               'fig_vloss.png',
-              color='#9370DB')
+              color='#9370DB',
+              linestyle='-.')
 
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 
