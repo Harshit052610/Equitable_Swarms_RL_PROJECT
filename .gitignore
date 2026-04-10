@@ -49,10 +49,10 @@ events.out.tfevents.*
 Thumbs.db
 
 # Data files (large)
-swarm_simulation.gif
-coverage_map.gif
-fairness_curve.png
-reward_curve.png
+# swarm_simulation.gif
+# coverage_map.gif
+# fairness_curve.png
+# reward_curve.png
 
 # Keep metrics.csv but ignore backups
 metrics.csv.bak
