@@ -123,7 +123,7 @@ def plot_tensorboard_evidence(logs):
             ax.fill_between(steps, values, alpha=0.15, color='gray')
     
     axes[1, 2].axis('off')
-    axes[1, 2].text(0.5, 0.5, 'Training Complete\n150 Epochs', 
+    axes[1, 2].text(0.5, 0.5, 'Training Complete\n500 Epochs', 
                     ha='center', va='center', fontsize=14, fontweight='bold')
     
     plt.tight_layout()
@@ -289,7 +289,7 @@ def main():
     st.markdown("**Architecture**: Multi-Agent PPO with Actor-Critic Networks")
     st.markdown("**Environment**: 10x10 Grid World with 3 Autonomous Drones")
     st.markdown("**Objective**: Equitable aid distribution using Jain's Fairness Index")
-    st.markdown("**Training Duration**: 861 seconds (150 epochs)")
+    st.markdown("**Training Duration**: 861 seconds (500 epochs)")
 
 
 if __name__ == "__main__":

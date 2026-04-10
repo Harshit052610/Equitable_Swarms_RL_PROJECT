@@ -346,7 +346,7 @@ def main():
     )
     
     print("=" * 80)
-    print("CONTINUED TRAINING - Resuming from epoch 61 to 150")
+    print("CONTINUED TRAINING - Resuming from epoch 61 to 500")
     print("Loading existing model from swarm_brain.pth")
     print("Appending new metrics to existing metrics.csv")
     print("=" * 80)

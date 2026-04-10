@@ -334,7 +334,7 @@ def main():
     
     print("=" * 80)
     print("ULTRA-FAST TRAINING MODE - Optimized for 10-minute completion")
-    print("Reduced epochs: 150 (vs 500), Batch size: 4096 (larger)")
+    print("Training epochs: 500, Batch size: 4096 (larger)")
     print("Increased learning rate: 2e-3 (vs 3e-4)")
     print("Reduced update epochs: 2 (vs 10) for faster learning")
     print("Reduced network size: [128, 64] (vs [256, 128, 64])")
@@ -342,7 +342,7 @@ def main():
     print("=" * 80)
     print()
     
-    trainer.train(num_epochs=150)
+    trainer.train(num_epochs=500)
 
 
 if __name__ == "__main__":
