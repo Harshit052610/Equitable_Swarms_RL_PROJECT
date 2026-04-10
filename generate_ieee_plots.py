@@ -11,12 +11,12 @@ plt.rcParams['ytick.labelsize'] = 9
 plt.rcParams['axes.labelsize'] = 10
 plt.rcParams['legend.fontsize'] = 8
 
-def save_ieee_plot(data, x_col, y_col, title, ylabel, filename, color='black', target=None):
+def save_ieee_plot(data, x_col, y_col, title, ylabel, filename, color='#1f77b4', target=None, target_color='#d62728'):
     plt.figure(figsize=(5, 4))
     plt.plot(data[x_col], data[y_col], color=color, linewidth=1.5, label=ylabel)
     
     if target is not None:
-        plt.axhline(y=target, color='black', linestyle='--', linewidth=1, label=f'Target ({target})')
+        plt.axhline(y=target, color=target_color, linestyle='--', linewidth=1.5, label=f'Target ({target})')
     
     plt.title(title, fontsize=11, fontweight='bold')
     plt.xlabel('Training Epoch', fontsize=10)
@@ -43,47 +43,52 @@ print("\n--- Generating IEEE-Format Graphs ---\n")
 save_ieee_plot(df_clean, 'epoch', 'mean_episode_reward', 
               'Episode Reward Over Training', 
               'Total Aid Delivered', 
-              'fig_reward.png')
+              'fig_reward.png',
+              color='#00BFFF')
 
 save_ieee_plot(df_clean, 'epoch', 'mean_jain_index', 
               'Equity Distribution Over Training', 
               "Jain's Fairness Index", 
               'fig_jain.png', 
-              target=0.8)
+              target=0.8,
+              color='#32CD32',
+              target_color='#FF4500')
 
 save_ieee_plot(df_clean, 'epoch', 'total_policy_loss', 
               'Policy Loss Convergence', 
               'Policy Loss', 
-              'fig_ploss.png')
+              'fig_ploss.png',
+              color='#FF6347')
 
 save_ieee_plot(df_clean, 'epoch', 'total_value_loss', 
               'Value Loss Convergence', 
               'Value Loss', 
-              'fig_vloss.png')
+              'fig_vloss.png',
+              color='#9370DB')
 
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 
-axes[0, 0].plot(df_clean['epoch'], df_clean['mean_episode_reward'], 'black', linewidth=1.5)
+axes[0, 0].plot(df_clean['epoch'], df_clean['mean_episode_reward'], '#00BFFF', linewidth=1.5)
 axes[0, 0].set_title('Episode Reward', fontsize=10, fontweight='bold')
 axes[0, 0].set_xlabel('Epoch', fontsize=9)
 axes[0, 0].set_ylabel('Reward', fontsize=9)
 axes[0, 0].grid(True, linestyle='--', alpha=0.5)
 
-axes[0, 1].plot(df_clean['epoch'], df_clean['mean_jain_index'], 'black', linewidth=1.5)
-axes[0, 1].axhline(y=0.8, color='black', linestyle='--', linewidth=1, label='Target (0.8)')
+axes[0, 1].plot(df_clean['epoch'], df_clean['mean_jain_index'], '#32CD32', linewidth=1.5)
+axes[0, 1].axhline(y=0.8, color='#FF4500', linestyle='--', linewidth=1.5, label='Target (0.8)')
 axes[0, 1].set_title("Jain's Fairness Index", fontsize=10, fontweight='bold')
 axes[0, 1].set_xlabel('Epoch', fontsize=9)
 axes[0, 1].set_ylabel('Fairness Index', fontsize=9)
 axes[0, 1].grid(True, linestyle='--', alpha=0.5)
 axes[0, 1].legend(fontsize=8)
 
-axes[1, 0].plot(df_clean['epoch'], df_clean['total_policy_loss'], 'black', linewidth=1.5)
+axes[1, 0].plot(df_clean['epoch'], df_clean['total_policy_loss'], '#FF6347', linewidth=1.5)
 axes[1, 0].set_title('Policy Loss', fontsize=10, fontweight='bold')
 axes[1, 0].set_xlabel('Epoch', fontsize=9)
 axes[1, 0].set_ylabel('Loss', fontsize=9)
 axes[1, 0].grid(True, linestyle='--', alpha=0.5)
 
-axes[1, 1].plot(df_clean['epoch'], df_clean['total_value_loss'], 'black', linewidth=1.5)
+axes[1, 1].plot(df_clean['epoch'], df_clean['total_value_loss'], '#9370DB', linewidth=1.5)
 axes[1, 1].set_title('Value Loss', fontsize=10, fontweight='bold')
 axes[1, 1].set_xlabel('Epoch', fontsize=9)
 axes[1, 1].set_ylabel('Loss', fontsize=9)
